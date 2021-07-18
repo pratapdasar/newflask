@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import random as rd
 
-app = Flask(__name__)
+application = app = Flask(__name__)
 
 quotes = list()
 
