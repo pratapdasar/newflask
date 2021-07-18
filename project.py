@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import random as rd
 
-project = Flask(__name__)
+app = application = Flask(__name__)
 
 quotes = list()
 
@@ -35,13 +35,13 @@ rd.seed(1)
 
 
 # Home Page
-@project.route('/')
+@app.route('/')
 def home():
     num = rd.randint(0,9)
     return render_template('home.html', id=num, quote=quotes[num][0], likes=quotes[num][1] )
 
 
-@project.route('/updateLike/<id>', methods=['GET'])
+@app.route('/updateLike/<id>', methods=['GET'])
 def updateLike(id):
     quotes[int(id)][1] += 1
     return "OK"
@@ -49,7 +49,7 @@ def updateLike(id):
 
 # Main Function
 if __name__ == '__main__':
-    project.run()
+    app.run()
 
 
 
